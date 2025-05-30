@@ -1,7 +1,7 @@
 package com.br.EAD.service;
 
-import com.br.EAD.dto.request.AuthenticationDTO;
-import com.br.EAD.dto.request.RegisterDTO;
+import com.br.EAD.dto.request.user.AuthenticationDTO;
+import com.br.EAD.dto.request.user.RegisterDTO;
 
 public interface UserService {
 

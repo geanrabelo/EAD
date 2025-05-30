@@ -1,7 +1,7 @@
 package com.br.EAD.service.impl;
 
-import com.br.EAD.dto.request.AuthenticationDTO;
-import com.br.EAD.dto.request.RegisterDTO;
+import com.br.EAD.dto.request.user.AuthenticationDTO;
+import com.br.EAD.dto.request.user.RegisterDTO;
 import com.br.EAD.entity.User;
 import com.br.EAD.enums.EnumCode;
 import com.br.EAD.exceptions.ex.UserEmailAlreadyExists;

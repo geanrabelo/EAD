@@ -1,4 +1,4 @@
-package com.br.EAD.service;
+package com.br.EAD.security;
 
 import com.br.EAD.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
