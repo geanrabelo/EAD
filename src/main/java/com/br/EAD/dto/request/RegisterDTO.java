@@ -1,4 +1,9 @@
 package com.br.EAD.dto.request;
 
-public record RegisterDTO() {
+import com.br.EAD.enums.Profile;
+
+public record RegisterDTO(String name,
+                          String email,
+                          String password,
+                          Profile profile){
 }
