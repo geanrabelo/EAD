@@ -3,6 +3,7 @@ package com.br.EAD.controller;
 import com.br.EAD.dto.request.AuthenticationDTO;
 import com.br.EAD.dto.request.RegisterDTO;
 import com.br.EAD.dto.response.MessageDTO;
+import com.br.EAD.dto.response.TokenDTO;
 import com.br.EAD.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,8 +25,8 @@ public class UserController {
 
     @PostMapping(path = "/login")
     @Transactional
-    public ResponseEntity<MessageDTO> login(@RequestBody @Validated AuthenticationDTO authenticationDTO){
-        return ResponseEntity.ok(new MessageDTO(userService.login(authenticationDTO)));
+    public ResponseEntity<TokenDTO> login(@RequestBody @Validated AuthenticationDTO authenticationDTO){
+        return ResponseEntity.ok(new TokenDTO(userService.login(authenticationDTO)));
     }
 
     @PostMapping(path = "/register")
