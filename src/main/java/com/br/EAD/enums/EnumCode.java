@@ -1,7 +1,8 @@
 package com.br.EAD.enums;
 
 public enum EnumCode {
-    USR000("Email already registered in system");
+    USR000("Email already registered in system"),
+    USR001("User not found");
 
     private String message;
 
