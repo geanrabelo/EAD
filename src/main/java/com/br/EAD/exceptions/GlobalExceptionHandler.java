@@ -2,6 +2,7 @@ package com.br.EAD.exceptions;
 
 import com.br.EAD.exceptions.dto.ErrorResponse;
 import com.br.EAD.exceptions.ex.UserEmailAlreadyExists;
+import com.br.EAD.exceptions.ex.UserNotFound;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -15,5 +16,13 @@ public class GlobalExceptionHandler {
     public ErrorResponse userEmailAlreadyExistsHandler(String message){
         return ErrorResponse.conflict(message);
     }
+
+    @ExceptionHandler(UserNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse userNotFoundHandler(String message){
+        return ErrorResponse.notFound(message);
+    }
+
+
 
 }
