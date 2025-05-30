@@ -41,7 +41,7 @@ public class User implements UserDetails {
         if(this.profile == Profile.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"),
                 new SimpleGrantedAuthority("ROLE_INSTRUCTOR"),
                 new SimpleGrantedAuthority("ROLE_STUDENT"));
-        if(this.profile == Profile.INSTRUCTOR) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"),
+        if(this.profile == Profile.INSTRUCTOR) return List.of(new SimpleGrantedAuthority("ROLE_INSTRUCTOR"),
                 new SimpleGrantedAuthority("ROLE_STUDENT"));
         return List.of(new SimpleGrantedAuthority("ROLE_STUDENT"));
     }
