@@ -1,6 +1,5 @@
 package com.br.EAD.entity;
 
-import com.br.EAD.dto.request.Options;
 import com.br.EAD.enums.Type;
 import jakarta.persistence.*;
 import lombok.*;
@@ -25,7 +24,7 @@ public class Question {
 
     private Type type;
 
-    private List<Options> options;
+    private List<String> options;
 
     @ManyToOne
     @JoinColumn(name = "assessment_id")
