@@ -1,4 +1,5 @@
 package com.br.EAD.dto.request;
 
-public record AuthenticatioNDTO() {
+public record AuthenticationDTO(String email,
+                                String password) {
 }
