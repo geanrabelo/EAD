@@ -28,10 +28,13 @@ public class SecurityConfig {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                .authorizeHttpRequests(authorize -> authorize
-//                        .requestMatchers(HttpMethod.POST,"/v1/ead/auth/register").permitAll()
-//                        .requestMatchers(HttpMethod.POST,"/v1/ead/auth/login").permitAll()
-//                )
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(HttpMethod.POST,"/v1/ead/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/v1/ead/course/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET,"/v1/ead/course/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT,"/v1/ead/course/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE,"/v1/ead/course/**").hasRole("ADMIN")
+                )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
