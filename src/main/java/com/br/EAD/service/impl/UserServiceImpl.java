@@ -2,7 +2,6 @@ package com.br.EAD.service.impl;
 
 import com.br.EAD.dto.request.AuthenticationDTO;
 import com.br.EAD.dto.request.RegisterDTO;
-import com.br.EAD.dto.response.MessageDTO;
 import com.br.EAD.entity.User;
 import com.br.EAD.enums.EnumCode;
 import com.br.EAD.exceptions.ex.UserEmailAlreadyExists;
@@ -39,9 +38,7 @@ public class UserServiceImpl implements UserService {
         var usernamePassword = new UsernamePasswordAuthenticationToken(authenticationDTO.email(), authenticationDTO.password()) ;
         var auth = authenticationManager.authenticate(usernamePassword);
 
-        String token = tokenService.generateToken((User) usernamePassword.getPrincipal());
-
-        return token;
+        return tokenService.generateToken((User) usernamePassword.getPrincipal());
     }
 
     @Override
