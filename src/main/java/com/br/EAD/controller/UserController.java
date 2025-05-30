@@ -3,7 +3,7 @@ package com.br.EAD.controller;
 import com.br.EAD.dto.request.user.AuthenticationDTO;
 import com.br.EAD.dto.request.user.RegisterDTO;
 import com.br.EAD.dto.response.MessageDTO;
-import com.br.EAD.dto.response.TokenDTO;
+import com.br.EAD.dto.response.user.TokenDTO;
 import com.br.EAD.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
