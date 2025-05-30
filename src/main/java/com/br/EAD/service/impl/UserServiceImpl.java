@@ -32,18 +32,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String login(AuthenticationDTO authenticationDTO) {
-        if(userRepository.findByEmail(authenticationDTO.email()).isEmpty()){
+        if(!userRepository.existsByEmail(authenticationDTO.email())){
             throw new UserNotFound(EnumCode.USR001.getMessage());
         }
         var usernamePassword = new UsernamePasswordAuthenticationToken(authenticationDTO.email(), authenticationDTO.password()) ;
         var auth = authenticationManager.authenticate(usernamePassword);
 
-        return tokenService.generateToken((User) usernamePassword.getPrincipal());
+        return tokenService.generateToken((User) auth.getPrincipal());
     }
 
     @Override
     public String register(RegisterDTO registerDTO) {
-        if(userRepository.findByEmail(registerDTO.email()).isPresent()) throw new UserEmailAlreadyExists(EnumCode.USR000.getMessage());
+        if(userRepository.existsByEmail(registerDTO.email())) throw new UserEmailAlreadyExists(EnumCode.USR000.getMessage());
         String passwordCrypt = new BCryptPasswordEncoder().encode(registerDTO.password());
 
         User user = User.builder()
