@@ -13,14 +13,14 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(UserEmailAlreadyExists.class)
     @ResponseStatus(HttpStatus.CONFLICT)
-    public ErrorResponse userEmailAlreadyExistsHandler(String message){
-        return ErrorResponse.conflict(message);
+    public ErrorResponse userEmailAlreadyExistsHandler(UserEmailAlreadyExists userEmailAlreadyExists){
+        return ErrorResponse.conflict(userEmailAlreadyExists.getMessage());
     }
 
     @ExceptionHandler(UserNotFound.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorResponse userNotFoundHandler(String message){
-        return ErrorResponse.notFound(message);
+    public ErrorResponse userNotFoundHandler(UserNotFound userNotFound){
+        return ErrorResponse.notFound(userNotFound.getMessage());
     }
 
 
