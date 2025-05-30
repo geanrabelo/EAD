@@ -1,6 +1,7 @@
 package com.br.EAD.service.impl;
 
 import com.br.EAD.dto.request.course.CourseCreatedDTO;
+import com.br.EAD.dto.request.course.CourseUpdateDTO;
 import com.br.EAD.dto.response.course.CourseDetailsDTO;
 import com.br.EAD.entity.Course;
 import com.br.EAD.enums.EnumCode;
@@ -49,6 +50,23 @@ public class CourseServiceImpl implements CourseService {
     public CourseDetailsDTO findById(UUID id) {
         if(!courseRepository.existsById(id)) throw new CourseNotFound(EnumCode.CRS001.getMessage());
         return new CourseDetailsDTO(courseRepository.getReferenceById(id));
+    }
+
+    @Override
+    public CourseDetailsDTO update(CourseUpdateDTO courseUpdateDTO) {
+        if(!courseRepository.existsById(courseUpdateDTO.id())) throw new CourseNotFound(EnumCode.CRS001.getMessage());
+        Course courseDatabase = courseRepository.getReferenceById(courseUpdateDTO.id());
+        if(courseUpdateDTO.name() != null){
+            courseDatabase.setName(courseUpdateDTO.name());
+        }
+        if(courseUpdateDTO.description() != null){
+            courseDatabase.setDescription(courseUpdateDTO.description());
+        }
+        if(courseUpdateDTO.active() != null){
+            courseDatabase.setActive(courseUpdateDTO.active());
+        }
+        Course courseSaved = courseRepository.save(courseDatabase);
+        return new CourseDetailsDTO(courseSaved);
     }
 
     @Override
