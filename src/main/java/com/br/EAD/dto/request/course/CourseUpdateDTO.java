@@ -1,11 +1,11 @@
 package com.br.EAD.dto.request.course;
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
 public record CourseUpdateDTO(
-        @NotBlank(message = "This field cannot be empty")
+        @NotNull(message = "This field cannot be empty")
         UUID id,
         String name,
         String description,
