@@ -58,4 +58,16 @@ public class GlobalExceptionHandler {
         return ErrorResponse.conflict(assessmentTittleAlreadyExists.getMessage());
     }
 
+    @ExceptionHandler(QuestionNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse questionNotFoundHandler(QuestionNotFound questionNotFound){
+        return ErrorResponse.notFound(questionNotFound.getMessage());
+    }
+
+    @ExceptionHandler(QuestionStatementAlreadyExists.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ErrorResponse questionStatementAlreadyExistsHandler(QuestionStatementAlreadyExists questionStatementAlreadyExists){
+        return ErrorResponse.conflict(questionStatementAlreadyExists.getMessage());
+    }
+
 }
