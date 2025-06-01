@@ -11,6 +11,6 @@ public record AssessmentUpdateDTO(
                                   Long id,
                                   @NotBlank(message = "This field cannot be empty")
                                   String tittle,
-                                  @NotBlank(message = "This field cannot be empty")
+                                  @NotNull(message = "This field cannot be empty")
                                   Type type) {
 }
