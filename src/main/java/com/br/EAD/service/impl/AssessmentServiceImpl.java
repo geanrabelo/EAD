@@ -61,8 +61,8 @@ public class AssessmentServiceImpl implements AssessmentService {
     public AssessmentDetailsDTO update(AssessmentUpdateDTO assessmentUpdateDTO) {
         if(!existsById(assessmentUpdateDTO.id())) throw new AssessmentNotFound(EnumCode.ASS001.getMessage());
         Assessment assessmentDatabase = assessmentRepository.getReferenceById(assessmentUpdateDTO.id());
-        assessmentDatabase.setTittle(assessmentDatabase.getTittle());
-        assessmentDatabase.setType(assessmentDatabase.getType());
+        assessmentDatabase.setTittle(assessmentUpdateDTO.tittle());
+        assessmentDatabase.setType(assessmentUpdateDTO.type());
         Assessment assessmentDatabaseUpdated = assessmentRepository.save(assessmentDatabase);
         return new AssessmentDetailsDTO(assessmentDatabaseUpdated);
     }
