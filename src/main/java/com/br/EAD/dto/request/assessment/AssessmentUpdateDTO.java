@@ -12,7 +12,5 @@ public record AssessmentUpdateDTO(
                                   @NotBlank(message = "This field cannot be empty")
                                   String tittle,
                                   @NotBlank(message = "This field cannot be empty")
-                                  Type type,
-                                  @NotNull(message = "This field cannot be empty")
-                                  UUID courseId) {
+                                  Type type) {
 }
