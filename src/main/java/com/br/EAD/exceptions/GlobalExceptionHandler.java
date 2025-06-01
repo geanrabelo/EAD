@@ -1,10 +1,7 @@
 package com.br.EAD.exceptions;
 
 import com.br.EAD.exceptions.dto.ErrorResponse;
-import com.br.EAD.exceptions.ex.CourseNotFound;
-import com.br.EAD.exceptions.ex.CourseTittleAlreadyExists;
-import com.br.EAD.exceptions.ex.UserEmailAlreadyExists;
-import com.br.EAD.exceptions.ex.UserNotFound;
+import com.br.EAD.exceptions.ex.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -35,6 +32,18 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.CONFLICT)
     public ErrorResponse courseTittleAlreadyExistsHandler(CourseTittleAlreadyExists courseTittleAlreadyExists){
         return ErrorResponse.conflict(courseTittleAlreadyExists.getMessage());
+    }
+
+    @ExceptionHandler(ClassroomNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse classroomNotFoundHandler(ClassroomNotFound classroomNotFound){
+        return ErrorResponse.notFound(classroomNotFound.getMessage());
+    }
+
+    @ExceptionHandler(ClassroomTittleAlreadyExists.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ErrorResponse classroomTittleAlreadyExistsHandler(ClassroomTittleAlreadyExists classroomTittleAlreadyExists){
+        return ErrorResponse.conflict(classroomTittleAlreadyExists.getMessage());
     }
 
 }
