@@ -38,6 +38,10 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET,"/v1/ead/classroom/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT,"/v1/ead/classroom/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/v1/ead/classroom/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST,"/v1/ead/assessment/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET,"/v1/ead/assessment/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT,"/v1/ead/assessment/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE,"/v1/ead/assessment/**").hasRole("ADMIN")
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
