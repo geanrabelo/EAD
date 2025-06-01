@@ -64,15 +64,9 @@ public class ClassroomServiceImpl implements ClassroomService {
     public ClassroomDetailsDTO update(ClassroomUpdateDTO classroomUpdateDTO) {
         if(!classroomRepository.existsById(classroomUpdateDTO.id())) throw new ClassroomNotFound(EnumCode.CLR001.getMessage());
         Classroom classroomDatabase = classroomRepository.getReferenceById(classroomUpdateDTO.id());
-        if(classroomUpdateDTO.tittle() != null){
-            classroomDatabase.setTittle(classroomUpdateDTO.tittle());
-        }
-        if(classroomUpdateDTO.description() != null){
-            classroomDatabase.setDescription(classroomDatabase.getDescription());
-        }
-        if(classroomUpdateDTO.linkVideo() != null){
-            classroomDatabase.setLinkVideo(classroomDatabase.getLinkVideo());
-        }
+        classroomDatabase.setTittle(classroomUpdateDTO.tittle());
+        classroomDatabase.setDescription(classroomDatabase.getDescription());
+        classroomDatabase.setLinkVideo(classroomDatabase.getLinkVideo());
         Classroom classroomDatabaseUpdated = classroomRepository.save(classroomDatabase);
         return new ClassroomDetailsDTO(classroomDatabaseUpdated);
     }
