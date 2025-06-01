@@ -6,7 +6,9 @@ public enum EnumCode {
     CRS000("Course already registered in system"),
     CRS001("Course not found"),
     CLR000("Classroom already registered in system"),
-    CLR001("Classroom not found");
+    CLR001("Classroom not found"),
+    ASS000("Assessment already registered in system"),
+    ASS001("Assessment not found");
 
     private String message;
 
