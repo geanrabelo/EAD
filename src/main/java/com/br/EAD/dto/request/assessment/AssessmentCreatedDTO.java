@@ -9,7 +9,7 @@ import java.util.UUID;
 public record AssessmentCreatedDTO(
         @NotBlank(message = "This field cannot be empty")
         String tittle,
-        @NotBlank(message = "This field cannot be empty")
+        @NotNull(message = "This field cannot be empty")
         Type type,
         @NotNull(message = "This field cannot be empty")
         UUID courseId) {
