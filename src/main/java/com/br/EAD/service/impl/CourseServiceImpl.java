@@ -56,15 +56,9 @@ public class CourseServiceImpl implements CourseService {
     public CourseDetailsDTO update(CourseUpdateDTO courseUpdateDTO) {
         if(!courseRepository.existsById(courseUpdateDTO.id())) throw new CourseNotFound(EnumCode.CRS001.getMessage());
         Course courseDatabase = courseRepository.getReferenceById(courseUpdateDTO.id());
-        if(courseUpdateDTO.name() != null){
-            courseDatabase.setName(courseUpdateDTO.name());
-        }
-        if(courseUpdateDTO.description() != null){
-            courseDatabase.setDescription(courseUpdateDTO.description());
-        }
-        if(courseUpdateDTO.active() != null){
-            courseDatabase.setActive(courseUpdateDTO.active());
-        }
+        courseDatabase.setName(courseUpdateDTO.name());
+        courseDatabase.setDescription(courseUpdateDTO.description());
+        courseDatabase.setActive(courseUpdateDTO.active());
         Course courseSaved = courseRepository.save(courseDatabase);
         return new CourseDetailsDTO(courseSaved);
     }
