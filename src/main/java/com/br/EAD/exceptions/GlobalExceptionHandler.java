@@ -46,4 +46,16 @@ public class GlobalExceptionHandler {
         return ErrorResponse.conflict(classroomTittleAlreadyExists.getMessage());
     }
 
+    @ExceptionHandler(AssessmentNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse assessmentNotFoundHandler(AssessmentNotFound assessmentNotFound){
+        return ErrorResponse.notFound(assessmentNotFound.getMessage());
+    }
+
+    @ExceptionHandler(AssessmentTittleAlreadyExists.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ErrorResponse assessmentTittleAlreadyExistsHandler(AssessmentTittleAlreadyExists assessmentTittleAlreadyExists){
+        return ErrorResponse.conflict(assessmentTittleAlreadyExists.getMessage());
+    }
+
 }
